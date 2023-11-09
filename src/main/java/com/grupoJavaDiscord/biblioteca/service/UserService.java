@@ -6,8 +6,8 @@ import java.util.List;
 public interface UserService {
 
     List<User> findAllUsers();
-    User findUserId(Long cuser);
+    User findUserById(Long cuser);
     User saveUser(User user);
-    User updateUser(User user, Long cuser);
+    User updateUser(User user);
     void deleteUser(Long cuser);
 }
