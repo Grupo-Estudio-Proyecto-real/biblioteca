@@ -2,8 +2,9 @@ package com.grupoJavaDiscord.biblioteca.controller;
 
 import com.grupoJavaDiscord.biblioteca.service.UserService;
 import com.grupoJavaDiscord.biblioteca.entity.User;
-import com.grupoJavaDiscord.biblioteca.service.UserServiceImpl;
+
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,11 +16,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserController {
 
+    @Autowired
     private UserService userService;
 
-    // public UserController(UserService userService) {
-    //    this.userService = userService;
-    //}
 
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
