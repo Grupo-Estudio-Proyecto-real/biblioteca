@@ -2,15 +2,15 @@ package com.grupoJavaDiscord.biblioteca.controller;
 
 import com.grupoJavaDiscord.biblioteca.entity.Issue;
 import com.grupoJavaDiscord.biblioteca.service.IssueService;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/issue")
 @RequiredArgsConstructor
 public class IssueController {
@@ -33,15 +33,15 @@ public class IssueController {
     }
 
     @PostMapping()
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public Issue saveIssue(Issue issue) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public Issue saveIssue(@RequestBody Issue issue) {
 
         return issueService.saveIssue(issue);
     }
 
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
-    public Issue updateIssue(Issue issue) {
+    public Issue updateIssue(@RequestBody Issue issue) {
 
         return issueService.updateIssue(issue);
     }

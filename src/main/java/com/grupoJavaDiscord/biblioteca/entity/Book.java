@@ -27,18 +27,19 @@ public class Book {
     @Column(name = "dedition")
     private String dedition;
 
-    @Column(name = "cgender")       // Código de género del libro
+    @Column(name = "cgender")       // Book genre code
     private Long cgender;
 
-    @Column(name = "summary")       // Resumen breve del libro
+    @Column(name = "summary")       // Brief book summary
     private String summary;
 
-    @Column(name = "frontpage")     // Nombre de la imagen de la portada del libro en formato jpeg
+    @Column(name = "frontpage")     // Name of the book cover image
     private String frontpage;
 
-    @Column(name = "pathbook")      // Ruta y nombre del fichero del libro virtual.
+    @Column(name = "pathbook")      // Path and name of virtual book
     private String pathbook;
 
     @Column(name = "availability")  // Libro disponible: (D)isponible, (P)restado, (F)uera de servicio
-    private String availability;
+    @Enumerated(EnumType.STRING)
+    private Availability availability;
 }

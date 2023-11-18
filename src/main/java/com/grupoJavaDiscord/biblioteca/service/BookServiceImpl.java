@@ -17,6 +17,7 @@ public class BookServiceImpl implements BookService {
     @Autowired
     private BookRepository bookRepository;
 
+
     @Override
     @Transactional(readOnly = true)
     public List<Book> findAllBook() {

@@ -14,7 +14,8 @@ users
 4. Instalar cliente, configurar y realizar pruebas con Hoppscotch.
 5. Gestión de documentación, versión de git.
 Total 10 horas de trabajo.
-                            ----------------------------
+
+
 books
 -----
 1. Desarrollo de las clases y interface java:
@@ -22,8 +23,13 @@ books
        (repository) --> BookRepository.java
        (service)    --> BookService.java, BookServiceImpl.java
        (controller) --> BookController.java
-Total 1:45 horas de trabajo.
-                            ----------------------------
+2. Crear la clase enum Availbility.
+3. Pruebas y correcciones código tanto en programa como BD.
+
+Total (1) 1:45 horas de trabajo.
+Total (2) 1:30 horas de trabajo.
+Total (3) 3:00 horas de trabajo.
+
 
 issues
 ------
@@ -32,8 +38,11 @@ issues
        (repository) --> IssueRepository.java
        (service)    --> IssueService.java, IssueServiceImpl.java
        (controller) --> IssueController.java
-Total 1:45 horas de trabajo.
-                            ----------------------------
+2. Pruebas y correcciones código tanto en programa como BD.
+
+Total (1) 1:45 horas de trabajo.
+Total (2) 2:00 horas de trabajo.
+
 
 loans
 -----
@@ -42,8 +51,10 @@ loans
        (repository) --> LoanRepository.java
        (service)    --> LoanService.java, LoanServiceImpl.java
        (controller) --> LoanController.java
-Total 1:45 horas de trabajo.
-                            ----------------------------
+2. Corrección de código y pruebas.
+Total (1) 1:45 horas de trabajo.
+Total (2) 1:00 horas de trabajo.
+
 
 
 (Rama devjean de Git)

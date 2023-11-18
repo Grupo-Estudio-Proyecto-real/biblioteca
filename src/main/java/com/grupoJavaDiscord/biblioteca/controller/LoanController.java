@@ -2,15 +2,15 @@ package com.grupoJavaDiscord.biblioteca.controller;
 
 import com.grupoJavaDiscord.biblioteca.entity.Loan;
 import com.grupoJavaDiscord.biblioteca.service.LoanService;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/loan")
 @RequiredArgsConstructor
 public class LoanController {
@@ -34,14 +34,14 @@ public class LoanController {
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public Loan saveLoan(Loan loan) {
+    public Loan saveLoan(@RequestBody Loan loan) {
 
         return loanService.saveLoan(loan);
     }
 
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
-    public Loan updateLoan(Loan loan) {
+    public Loan updateLoan(@RequestBody Loan loan) {
 
         return loanService.updateLoan(loan);
     }

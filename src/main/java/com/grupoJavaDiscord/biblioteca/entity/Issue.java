@@ -13,12 +13,12 @@ public class Issue {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cgender")   // Código del género
+    @Column(name = "cgender")
     private Long cgender;
 
-    @Column(name =  "issue")    // Tema del libro
+    @Column(name =  "issue")
     private String issue;
 
-    @Column(name = "subtopic")  // Subtema del libro
+    @Column(name = "subtopic")
     private String subtopic;
 }
