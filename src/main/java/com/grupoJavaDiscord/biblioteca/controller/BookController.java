@@ -1,12 +1,16 @@
 package com.grupoJavaDiscord.biblioteca.controller;
 
+import com.grupoJavaDiscord.biblioteca.dto.BookDTO;
 import com.grupoJavaDiscord.biblioteca.entity.Book;
+import com.grupoJavaDiscord.biblioteca.exception.BookNotFoundException;
 import com.grupoJavaDiscord.biblioteca.service.BookService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -20,30 +24,35 @@ public class BookController {
 
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public List<Book> findAllBook() {
+    public List<BookDTO> findAllBook() {
 
-        return bookService.findAllBook();
+        List<BookDTO> bookDTOS = bookService.findAllBook();
+
+        if (bookDTOS.isEmpty()) {
+            throw new BookNotFoundException("No books found, the list is empty.")
+        }
+        return bookDTOS;
     }
 
     @GetMapping("/{cbook}")
     @ResponseStatus(HttpStatus.OK)
-    public Book findBookById(@PathVariable Long cbook) {
+    public BookDTO findBookById(@PathVariable Long cbook) {
 
         return bookService.findBookById(cbook);
     }
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public Book saveBook(@RequestBody Book book) {
+    public BookDTO saveBook(@RequestBody @Valid BookDTO bookDTO) {
 
         return bookService.saveBook(book);
     }
 
-    @PutMapping()
+    @PutMapping("/{cbook}")
     @ResponseStatus(HttpStatus.OK)
-    public Book updateBook(@RequestBody Book book) {
+    public Book updateBook(@RequestBody @Valid BookDTO bookDTO, @PathVariable Long cbook) {
 
-        return bookService.updateBook(book);
+        return bookService.updateBook(book, cbook);
     }
 
     @DeleteMapping("/{cbook}")

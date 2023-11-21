@@ -58,7 +58,7 @@ Total (2) 1:00 horas de trabajo.
 
 
 (Rama devjean de Git)
---------------
+---------------------
 1. Tabla book, insertar registros nuevos en book, añadir código a application.properties.
 2. Creado carpetas entity, repository, service, controller.
 3. Desarrollo de las clases y interface java:
