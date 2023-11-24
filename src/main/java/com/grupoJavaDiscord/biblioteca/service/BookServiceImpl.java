@@ -49,6 +49,7 @@ public class BookServiceImpl implements BookService {
         Book book = Book.builder()
                 .title(bookDTO.getTitle())
                 .authors(bookDTO.getAuthors())
+                .summary(bookDTO.getSummary())
                 .build();
 
         return MapToDTO.mapBookToDTO(bookRepository.save(book));
@@ -62,7 +63,8 @@ public class BookServiceImpl implements BookService {
         Book book = existingBook.orElse(null);
 
         book.setTitle(bookDTO.getTitle());
-        book.setAuthors(bookDTO.getAuthors);
+        book.setAuthors(bookDTO.getAuthors());
+        book.setSummary(bookDTO.getSummary());
 
         return MapToDTO.mapBookToDTO(bookRepository.save(book));
     }

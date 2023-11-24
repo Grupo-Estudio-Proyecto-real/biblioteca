@@ -21,4 +21,27 @@ public class GlobalControlAdvice {
         return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(IssueNotFoundException.class)
+    public ResponseEntity<Object> issueNotFoundHandler(Exception e) {
+
+        ApiError apiError = ApiError.builder()
+                .message(e.getMessage())
+                .description("Issue not found")
+                .date(java.time.LocalDate.now())
+                .build();
+
+        return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<Object> userNotFounHandler(Exception e) {
+
+        ApiError apiError = ApiError.builder()
+                .message(e.getMessage())
+                .description("User not found")
+                .date(java.time.LocalDate.now())
+                .build();
+
+        return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
+    }
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/library")
@@ -29,7 +30,7 @@ public class BookController {
         List<BookDTO> bookDTOS = bookService.findAllBook();
 
         if (bookDTOS.isEmpty()) {
-            throw new BookNotFoundException("No books found, the list is empty.")
+            throw new BookNotFoundException("No books found, the list is empty.");
         }
         return bookDTOS;
     }
@@ -38,26 +39,56 @@ public class BookController {
     @ResponseStatus(HttpStatus.OK)
     public BookDTO findBookById(@PathVariable Long cbook) {
 
-        return bookService.findBookById(cbook);
+        Optional<BookDTO> book = Optional.ofNullable(bookService.findBookById(cbook));
+
+        if (book.isPresent()) {
+            return  book.get();
+        } else {
+            throw new BookNotFoundException("Book with id is not found " + cbook);
+        }
     }
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public BookDTO saveBook(@RequestBody @Valid BookDTO bookDTO) {
 
-        return bookService.saveBook(book);
+        try {
+            return bookService.saveBook(bookDTO);
+        } catch (BookNotFoundException e) {
+            throw new BookNotFoundException("Book can´t create correctly");
+        }
+
     }
 
     @PutMapping("/{cbook}")
     @ResponseStatus(HttpStatus.OK)
-    public Book updateBook(@RequestBody @Valid BookDTO bookDTO, @PathVariable Long cbook) {
+    public BookDTO updateBook(@RequestBody @Valid BookDTO bookDTO, @PathVariable Long cbook) {
 
-        return bookService.updateBook(book, cbook);
+        Optional<BookDTO> existingbook = Optional.ofNullable(bookService.findBookById(cbook));
+
+        try {
+
+            if (existingbook.isEmpty()) {
+                throw new BookNotFoundException("Book with id is not found " + cbook);
+            }
+            return bookService.updateBook(bookDTO, cbook);
+
+        } catch (BookNotFoundException e) {
+            throw new BookNotFoundException("Book can´t update correctly");
+        }
+
+
     }
 
     @DeleteMapping("/{cbook}")
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public void deleteBook(@PathVariable Long cbook) {
+
+        Optional<BookDTO> existingbook = Optional.ofNullable(bookService.findBookById(cbook));
+
+        if (existingbook.isEmpty()) {
+            throw new BookNotFoundException("Book with id is not found " + cbook);
+        }
 
         bookService.deleteBook(cbook);
     }

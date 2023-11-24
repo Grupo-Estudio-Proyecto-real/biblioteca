@@ -1,14 +1,15 @@
 package com.grupoJavaDiscord.biblioteca.service;
 
+import com.grupoJavaDiscord.biblioteca.dto.IssueDTO;
 import com.grupoJavaDiscord.biblioteca.entity.Issue;
 
 import java.util.List;
 
 public interface IssueService {
 
-    List<Issue> findAllIssue();
-    Issue findIssueById(Long cgender);
-    Issue saveIssue(Issue issue);
-    Issue updateIssue(Issue issue);
+    List<IssueDTO> findAllIssue();
+    IssueDTO findIssueById(Long cgender);
+    IssueDTO saveIssue(IssueDTO issueDTO);
+    IssueDTO updateIssue(IssueDTO issueDTO, Long cgender);
     void deleteIssue(Long cgender);
 }
