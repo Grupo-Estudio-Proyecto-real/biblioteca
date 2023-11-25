@@ -93,7 +93,20 @@ Implementar para Users los siguientes elementos:
 Total 03:00 horas de trabajo.
 
 
+# PENDIENTE.
+-------------
 
+Se tiene pendiente los siguientes puntos:
+1. Implementar las relaciones entre entidades de 1 a N (ya se tiene la forma de hacelo).
+2. Aplicar seguridad.
+3. Implementar esta solución monolitica en microservicios.
+4. Implementar el Front end en Angular.
+
+
+
+
+# PRUEBAS DE BACKEND.
+-----------------------
 
 Book - DTO, map, exception (pruebas)
 ------------------------------------
@@ -101,20 +114,49 @@ Las pruebas realizadas son (solo en Book) - Partimos sin datos:
 1. GET de la lista completa de todos los libros (OK, indica que no hay).
 2. GET de un libro concreto (OK, inidica que no hay ese libro).
 3. POST con todos los campos (OK, pero solo guarda los campos indicados por BookDTO).
-En summary me puso null (no tuvo en cuenta el valor puesto) el resto de campos se pusieron NULL.
-4. PUT, modifico el campo summary y authors. Modifica authors, pero summary lo pone a null.
-
-DELETE, no se prueba porque es algo que no se modifico.
+4. PUT, modifico el campo summary y authors.
+5. DELETE, se borra un elemento de la tabla books.
+6. DELETE, se intenta borrar un registro que no existe.
+7. PUT, hacer un cambio en un registro que no existe, el sistema lo detecta.
 
 Total 01:30 hora de trabajo.
 
+Issue - DTO, map, exception (pruebas)
+------------------------------------
+Las pruebas realizadas son (solo en Issue) - Partimos sin datos:
+1. GET de la lista completa de todos los generos o issues (OK, indica que no hay).
+2. GET de un genero concreto (OK, inidica que no hay ese genero).
+3. POST con todos los campos (OK, pero solo guarda los campos indicados por IssueDTO).
+4. PUT, modifico el campo issue y subtopic.
+5. DELETE, se borrar un elemento de la tabla issues.
+6. DELETE, se intenta borrar un registro que no existe.
+7. PUT, hacer un cambio en un registro que no existe, el sistema lo detecta.
+
+Total 00:45 hora de trabajo.
+
+
+
+User - DTO, map, exception (pruebas)
+------------------------------------
+Las pruebas realizadas son (solo en User) - Partimos sin datos:
+1. GET de la lista completa de todos los users (OK, indica que no hay).
+2. GET de un user concreto (OK, inidica que no hay ese genero).
+3. POST con todos los campos (OK, pero solo guarda los campos indicados por UserDTO).
+4. PUT, modifico todos los campos que hay en UserDTO.
+5. DELETE, se borrar un elemento de la tabla users.
+6. DELETE, se intenta borrar un registro que no existe.
+7. PUT, hacer un cambio en un registro que no existe, el sistema lo detecta.
+
+Total 00:35 hora de trabajo.
 
 
 
 PROBLEMAS EN DTO.
 -----------------
 Book - El campo summary me lo pone a null y no hace caso del valor puesto.  RESUELTO
-Book -
+Issue, User - Error en el update (PUT).  RESUELTO.
+
+
 
 (Rama devjean de Git)
 ---------------------

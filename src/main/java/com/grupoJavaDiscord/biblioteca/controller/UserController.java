@@ -62,9 +62,9 @@ public class UserController {
 
     }
 
-    @PutMapping()
+    @PutMapping("/{cuser}")
     @ResponseStatus(HttpStatus.OK)
-    public UserDTO updateUser(@RequestBody @Valid UserDTO userDTO, Long cuser) {
+    public UserDTO updateUser(@RequestBody @Valid UserDTO userDTO, @PathVariable Long cuser) {
 
         Optional<UserDTO> existingUser = Optional.ofNullable(userService.findUserById(cuser));
 

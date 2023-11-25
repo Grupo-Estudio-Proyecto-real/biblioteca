@@ -58,9 +58,9 @@ public class IssueController {
         }
     }
 
-    @PutMapping()
+    @PutMapping("/{cgender}")
     @ResponseStatus(HttpStatus.OK)
-    public IssueDTO updateIssue(@RequestBody @Valid IssueDTO issueDTO, Long cgender) {
+    public IssueDTO updateIssue(@RequestBody @Valid IssueDTO issueDTO, @PathVariable Long cgender) {
 
         Optional<IssueDTO> existingIssue = Optional.ofNullable(issueService.findIssueById(cgender));
 
