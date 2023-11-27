@@ -1,11 +1,17 @@
 package com.grupoJavaDiscord.biblioteca.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "loans")
 public class Loan {
@@ -15,11 +21,13 @@ public class Loan {
     @Column(name = "cloan")
     private Long cloan;         // Código préstamo
 
-    @Column(name = "cuser")
-    private Long cuser;         // Código usuario
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "cuser")
+    private User user;           // User code.
 
-    @Column(name = "cbook")
-    private Long cbook;         // Código libro
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "cbook")
+    private Book book;          // Book code.
 
     @Column(name = "floan")
     private String floan;       // Fecha del préstamo

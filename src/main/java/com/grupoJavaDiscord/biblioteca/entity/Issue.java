@@ -4,6 +4,8 @@ package com.grupoJavaDiscord.biblioteca.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
@@ -23,4 +25,7 @@ public class Issue {
 
     @Column(name = "subtopic")
     private String subtopic;
+
+    @OneToMany(mappedBy = "issue")
+    private List<Book> books;
 }

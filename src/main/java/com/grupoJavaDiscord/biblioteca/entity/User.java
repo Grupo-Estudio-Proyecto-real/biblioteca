@@ -3,6 +3,8 @@ package com.grupoJavaDiscord.biblioteca.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
@@ -44,5 +46,6 @@ public class User {
     @Column(name = "dpenalty")
     private Integer dpenalty;
 
-
+    @OneToMany(mappedBy = "user")
+    private List<Loan> loans;
 }

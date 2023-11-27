@@ -3,6 +3,8 @@ package com.grupoJavaDiscord.biblioteca.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
@@ -29,8 +31,15 @@ public class Book {
     @Column(name = "dedition")
     private String dedition;
 
-    @Column(name = "cgender")       // Book genre code
-    private Long cgender;
+    @OneToMany(mappedBy = "book")
+    private List<Loan> loans;
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "cgender")
+    private Issue issue;
+
+    //    @Column(name = "cgender")
+    //    private Long cgender;
 
     @Column(name = "summary")       // Brief book summary
     private String summary;
