@@ -11,46 +11,46 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "books")
+@Table(name = "books",
+        catalog = "biblioteca",
+        indexes = {@Index(name = "UK_NAME", columnList = "title", unique = true),
+                   @Index(name = "UK_ISBN", columnList = "isbn", unique = true)})
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cbook")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)         //Code of book, it's a number
+    @Column(name = "cbook", length = 6)
     private Long cbook;
 
-    @Column(name = "title", unique = true)
+    @Column(name = "title", nullable = false, length = 80)      //The book' title
     private String title;
 
-    @Column(name = "isbn", unique = true)
+    @Column(name = "isbn", nullable = false, length = 17)       //Code of I.S.B.N.
     private String isbn;
 
-    @Column(name = "authors")
+    @Column(name = "authors", nullable = false, length = 80)    //Names of authors
     private String authors;
 
-    @Column(name = "dedition")
+    @Column(name = "dedition", length = 10)                     //Date of edition
     private String dedition;
 
-    @OneToMany(mappedBy = "book")
-    private List<Loan> loans;
+    @OneToOne(mappedBy = "book")
+    private Loan loan;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "cgender")
-    private Issue issue;
+    @JoinColumn(name = "cgender", referencedColumnName = "cgender", foreignKey = @ForeignKey(name = "FK_BOOKS_ISSUE"))
+    private Issue issue;                                        //Code gender of book
 
-    //    @Column(name = "cgender")
-    //    private Long cgender;
-
-    @Column(name = "summary")       // Brief book summary
+    @Column(name = "summary", length = 255)                     // Brief book summary
     private String summary;
 
-    @Column(name = "frontpage")     // Name of the book cover image
+    @Column(name = "frontpage", length = 60)                    // Name of the book cover image
     private String frontpage;
 
-    @Column(name = "pathbook")      // Path and name of virtual book
+    @Column(name = "pathbook", length = 200)                    // Path and name of virtual book
     private String pathbook;
 
-    @Column(name = "availability")  // Libro disponible: (D)isponible, (P)restado, (F)uera de servicio
+    @Column(name = "availability", length = 1)                  // List status: (D)isponible, (P)restado, (F)uera de servicio
     @Enumerated(EnumType.STRING)
     private Availability availability;
 }

@@ -43,7 +43,7 @@ public class IssueController {
         if (issue.isPresent()) {
             return issue.get();
         } else {
-            throw new IssueNotFoundException("Book with id is not found " + cgender);
+            throw new IssueNotFoundException("Issue with id is not found " + cgender);
         }
     }
 
@@ -79,9 +79,9 @@ public class IssueController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public void deleteIssue(@PathVariable Long cgender) {
 
-        Optional<IssueDTO> existingUser = Optional.ofNullable(issueService.findIssueById(cgender));
+        Optional<IssueDTO> existingIssue = Optional.ofNullable(issueService.findIssueById(cgender));
 
-        if (existingUser.isEmpty()) {
+        if (existingIssue.isEmpty()) {
             throw new IssueNotFoundException("Issue with id is not found " + cgender);
         }
 

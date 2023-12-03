@@ -12,18 +12,19 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "issues")
+@Table(name = "issues",
+        catalog = "biblioteca")
 public class Issue {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cgender")
+    @Column(name = "cgender", length = 4)
     private Long cgender;
 
-    @Column(name =  "issue")
+    @Column(name =  "issue", nullable = false, length = 20)
     private String issue;
 
-    @Column(name = "subtopic")
+    @Column(name = "subtopic", length = 20)
     private String subtopic;
 
     @OneToMany(mappedBy = "issue")

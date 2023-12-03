@@ -14,7 +14,7 @@ public class GlobalControlAdvice {
 
         ApiError apiError = ApiError.builder()
                 .message(e.getMessage())
-                .description("Book not found")
+                .description("(Exception) - Book not found")
                 .date(java.time.LocalDate.now())
                 .build();
 
@@ -26,7 +26,7 @@ public class GlobalControlAdvice {
 
         ApiError apiError = ApiError.builder()
                 .message(e.getMessage())
-                .description("Issue not found")
+                .description("(Exception) - Issue not found")
                 .date(java.time.LocalDate.now())
                 .build();
 
@@ -38,10 +38,71 @@ public class GlobalControlAdvice {
 
         ApiError apiError = ApiError.builder()
                 .message(e.getMessage())
-                .description("User not found")
+                .description("(Exception) - User not found")
                 .date(java.time.LocalDate.now())
                 .build();
 
         return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(LoanNotFoundException.class)
+    public ResponseEntity<Object> loanNotFoundHandler(Exception e) {
+
+        ApiError apiError = ApiError.builder()
+                .message(e.getMessage())
+                .description("(Exception) - Loan not found")
+                .date(java.time.LocalDate.now())
+                .build();
+
+        return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(BookNotSaveException.class)
+    public ResponseEntity<Object> bookNotSaveHandler(Exception e) {
+
+        ApiError apiError = ApiError.builder()
+                .message(e.getMessage())
+                .description("(Exception) - Book cann´t be saved")
+                .date(java.time.LocalDate.now())
+                .build();
+
+        return new ResponseEntity<>(apiError, HttpStatus.INTERNAL_SERVER_ERROR);
+
+    }
+
+    @ExceptionHandler(UserNotSaveException.class)
+    public ResponseEntity<Object> userNotSaveHandler(Exception e) {
+
+        ApiError apiError = ApiError.builder()
+                .message(e.getMessage())
+                .description("(Exception) - User cann't be saved")
+                .date(java.time.LocalDate.now())
+                .build();
+
+        return new ResponseEntity<>(apiError, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(IssueNotSaveException.class)
+    public ResponseEntity<Object> issueNotSaveHandler(Exception e) {
+
+        ApiError apiError = ApiError.builder()
+                .message(e.getMessage())
+                .description("(Exception) - Issue cann't be saved")
+                .date(java.time.LocalDate.now())
+                .build();
+
+        return new ResponseEntity<>(apiError, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(LoanNotSaveException.class)
+    public ResponseEntity<Object> loanNotSaveHandler(Exception e) {
+
+        ApiError apiError = ApiError.builder()
+                .message(e.getMessage())
+                .description("(Exception) - Loan cann't be saved")
+                .date(java.time.LocalDate.now())
+                .build();
+
+        return new ResponseEntity<>(apiError, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

@@ -93,14 +93,56 @@ Implementar para Users los siguientes elementos:
 Total 03:00 horas de trabajo.
 
 
+Relaciones entre tablas usando JPA.
+-----------------------------------
+1. Se implementa las relaciones entre las entidades (entity), modificamos las clases java:
+User.java, Book.java, Issue.java, Loan.java.
+2. Verificar desde mysql que las tablas mantenga las relaciones definidas con @OneToMany / @ManyToOne / OneToOne.
+
+Total 00:30 horas de trabajo.
+
+3. Añadimos caracteristicas y definiciones JPA a las clases del contenedor entity.
+Tamaño de cada campo, Null, nombre de indices, constraints de Foreign key
+Book.java, User.java, Issue.java, Loan.java
+
+Total 03:00 horas de trabajo
+
+
+Creamos entorno para trabajadores de la biblioteca (separado de las funcionalidades de los usuarios).
+-----------------------------------------------------------------------------------------------------
+Se crea a parte un entorno solo para los trabajadores de la biblioteca (aunque implique duplicar pero servira para la seguridad):
+
+1. DTO: BookAdminDTO.java, IssueAdminDTO.java, UserAdminDTO.java, LoanAdminDTO.java
+
+2. Exception:  BookNotSaveException.java, UserNotSaveException.java, IssueNotSaveException.java, LoanNotSaveException.java
+
+3. Service: BookAdminService.java / BookAdminServiceImpl.java, IssueAdminService.java / IssueAdminServiceImpl.java
+            UserAdminService.java / pendiente,  LoanAdminService.java / pendiente
+
+4. Controller:  BookAdminController.java, IssueAdminController.java, resto pendiente.
+
+5. Pruebas:  Pendiente de esta parte.
+
+Total 08:00 horas de trabajo.
+
+
 # PENDIENTE.
 -------------
-
 Se tiene pendiente los siguientes puntos:
-1. Implementar las relaciones entre entidades de 1 a N (ya se tiene la forma de hacelo).
-2. Aplicar seguridad.
-3. Implementar esta solución monolitica en microservicios.
-4. Implementar el Front end en Angular.
+
+1. Aplicar seguridad.  Ver estos videos sobre el tema:
+https://www.youtube.com/watch?v=pmSJTrOWi7w (1 capitulo)
+https://www.youtube.com/watch?v=aeCotM2DORo (2 capitulo, continuación del 1)
+https://www.youtube.com/watch?v=nwqQYCM4YT8&t=10s (crear un login spring Boot 3)
+
+Para ver token:
+https://www.youtube.com/watch?v=uKaDrojacqw (Crear login con Angular + Spring Boot + JWT)
+
+2. Implementar esta solución monolitica en microservicios.
+
+3. Implementar el Front end en Angular.
+
+
 
 
 

@@ -13,26 +13,27 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "loans")
+@Table(name = "loans",
+        catalog = "biblioteca")
 public class Loan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cloan")
-    private Long cloan;         // Código préstamo
+    @Column(name = "cloan", length = 8)
+    private Long cloan;                 // Código préstamo
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "cuser")
-    private User user;           // User code.
+    @JoinColumn(name = "cuser", referencedColumnName = "cuser", foreignKey = @ForeignKey(name = "FK_LOANS_USER"))
+    private User user;                  // User code.
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "cbook")
-    private Book book;          // Book code.
+    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "cbook", referencedColumnName = "cbook", foreignKey = @ForeignKey(name = "FK_LOAN_BOOK"))
+    private Book book;                  // Book code.
 
-    @Column(name = "floan")
-    private String floan;       // Fecha del préstamo
+    @Column(name = "floan", length = 10)
+    private String floan;               // Date of loan
 
     @Column(name = "daysloan")
-    private Integer daysloan;   // Dias totales de préstamo
+    private Integer daysloan;           // Total days of loan
 
 }
