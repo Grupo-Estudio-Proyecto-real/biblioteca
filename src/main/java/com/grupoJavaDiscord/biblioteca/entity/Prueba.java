@@ -1,22 +1,10 @@
 package com.grupoJavaDiscord.biblioteca.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
 
-import java.util.List;
-
-@Getter
-@Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "books",
-        catalog = "biblioteca",
-        indexes = {@Index(name = "UK_NAME", columnList = "title", unique = true),
-                   @Index(name = "UK_ISBN", columnList = "isbn", unique = true)})
-public class Book {
-
+@Table(name = "books")
+public class Prueba {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)         //Code of book, it's a number
     @Column(name = "cbook", length = 6)

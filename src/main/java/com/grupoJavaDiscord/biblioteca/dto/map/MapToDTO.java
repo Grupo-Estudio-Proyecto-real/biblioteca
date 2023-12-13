@@ -17,7 +17,9 @@ public class MapToDTO {
         return BookDTO.builder()
                 .title(book.getTitle())
                 .authors(book.getAuthors())
+                .isbn(book.getIsbn())
                 .summary((book.getSummary()))
+                .issue(book.getIssue())
                 .build();
     }
 

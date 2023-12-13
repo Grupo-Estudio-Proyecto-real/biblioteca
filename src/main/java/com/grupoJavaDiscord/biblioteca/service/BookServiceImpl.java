@@ -38,7 +38,7 @@ public class BookServiceImpl implements BookService {
     public BookDTO findBookById(Long cbook) {
 
         Optional<Book> existingBook = bookRepository.findById(cbook);
-
+        System.out.println("Valor de existingBook:  " + existingBook.toString());
         return existingBook.map(MapToDTO::mapBookToDTO)
                 .orElseThrow( () -> new BookNotFoundException(" Book not found because this id no exist"));
     }
@@ -49,7 +49,9 @@ public class BookServiceImpl implements BookService {
         Book book = Book.builder()
                 .title(bookDTO.getTitle())
                 .authors(bookDTO.getAuthors())
+                .isbn(bookDTO.getIsbn())
                 .summary(bookDTO.getSummary())
+                .issue(bookDTO.getIssue())
                 .build();
 
         return MapToDTO.mapBookToDTO(bookRepository.save(book));
@@ -64,7 +66,9 @@ public class BookServiceImpl implements BookService {
 
         book.setTitle(bookDTO.getTitle());
         book.setAuthors(bookDTO.getAuthors());
+        book.setIsbn(bookDTO.getIsbn());
         book.setSummary(bookDTO.getSummary());
+        book.setIssue(bookDTO.getIssue());
 
         return MapToDTO.mapBookToDTO(bookRepository.save(book));
     }

@@ -121,7 +121,10 @@ Se crea a parte un entorno solo para los trabajadores de la biblioteca (aunque i
 
 4. Controller:  BookAdminController.java, IssueAdminController.java, resto pendiente.
 
-5. Pruebas:  Pendiente de esta parte.
+5. Pruebas:  Se encuentra un problema de cast en el Post por la relación entre tablas usando JPA.
+(5/12/2023 - 2:30 horas
+ 5/12/2023 - 1:20 horas)
+
 
 Total 08:00 horas de trabajo.
 
